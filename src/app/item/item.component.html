@@ -1,0 +1,19 @@
+<h1 class="text-center">I am item</h1>
+
+<h1>I am parent</h1>
+<ul>
+    <li *ngFor="let detail of details">{{detail}}</li>
+</ul>
+<app-item-details [itemtitleInChild]="itemTitleInParent" (itemDetailsEvent)="addDetails($event)"></app-item-details>
+
+
+
+<div class="panel default-panel m-auto">
+    <div class="panel-heading">
+        <ng-content select=".heading"></ng-content>
+    </div>
+    <div class="panel-body">
+        <ng-content select=".body"></ng-content>
+
+    </div>
+</div>

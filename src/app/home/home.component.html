@@ -1,0 +1,29 @@
+
+<div>home works!</div>
+
+<!--<h1>{{title}}</h1>            Interpolation Binding
+<h2 [textContent]="title"></h2>   property binding (one way binding)
+<img src="{{imageUrl}}" alt="">
+<img [src]="imageUrl" alt=""> -->
+<button type="button" class="btn btn-primary me-5" [style.fontSize]="isActive? '50px' : '20px'" >Primary</button>
+<button type="button" class="btn btn-danger" (click)="buttonColor()">Danger</button>
+
+<input type="text" #firstName (keyup.enter)="inputKeyUp(firstName.value)">
+
+<!--when press on the button print the value in the console-->
+<input #color type="text" placeholder="press your fav color" class="mt-5 ms-5">
+<button (click)="setColor(color.value)">set color</button>
+<p [style.color]="varColor" class="ms-5 mt-5">Hi mariam</p>
+
+<!--two way binding-->
+<!--<input [(ngModel)]="firstname" type="text" placeholder="press your fav color" class="mt-5 ms-5">
+<button (click)="setsColor(firstname)">set color</button>
+<p  class="ms-5 mt-5">{{firstname}}</p>-->
+
+
+
+
+<!--test two way binding -->
+<!--<input [(ngModel)]="usernumber" type="number">
+<button (click)="onRange(usernumber)">Send the value</button>
+<h1>{{usernumber}}</h1>-->

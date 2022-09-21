@@ -1,0 +1,7 @@
+<h1 class="text-center">I am item-details</h1>
+
+<h1>I am child </h1>
+<p>my title is {{itemtitleInChild}}</p>
+<label for="itemLabel">I am label of this input</label>
+<input type="text" id="itemLabel" #itemDetails>
+<button (click)="addItemDetails(itemDetails.value)">add</button>

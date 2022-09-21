@@ -1,0 +1,48 @@
+<h1 class="text-center">I am favorite icon</h1>
+<!--<div style="font-size: 20px;">
+    <i class="fa-solid fa-heart" (click)="onFavouriteClick()" [class.solidHeart]="!isActive"
+        style="font-size: 50px;"></i>
+    <i class="fa-regular fa-heart" (click)="onFavouriteClick()" [class.heartRegular]="isActive"
+        style="font-size: 50px;"></i>
+    Favourite icon
+</div>-->
+<div style="font-size: 20px;">
+    <i class=" fa-heart" (click)="onFavouriteClick()" [ngClass]="{'fa-solid': isActive,'fa-regular': !isActive }"
+        [ngStyle]="{'color':isActive? 'red' : 'blue', 'font-size': isActive? '40px':'80px'}">
+    </i>
+    <div>Favourite icon</div>
+</div>
+
+
+<!--start pipes-->
+<h1>fullName : {{employee.fullName | uppercase }}</h1>
+<h1>rationg : {{employee.rating | lowercase }}</h1>
+<h1>salary : {{employee.salary | currency}}</h1>
+<h1>salary : {{employee.salary | percent}}</h1>
+<h1>start from : {{employee.hiringdate | date}}</h1>
+<!--end pipes-->
+<!--start custom pipes-->
+<p>{{title | summary:55}}</p>
+<!--end custom pipes-->
+
+
+<!--start template Driven form-->
+<!--<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <input type="text" required ngModel name="name" #name="ngModel">
+    <p *ngIf="name.touched && name.errors?.['required']">
+        must fill this
+    </p>
+    <button type="submit">submit</button>
+</form>-->
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div ngModelGroup="user-data">
+        <input type="text"  ngModel name="name" #name="ngModel">
+        <input type="text"  ngModel name="email" #email="ngModel">
+    </div>
+
+    <input type="text"  ngModel name="phone" #phone="ngModel">
+
+    <button type="submit">submit</button>
+    <button type="reset">reset</button>
+</form>
+<!--end template Driven form-->

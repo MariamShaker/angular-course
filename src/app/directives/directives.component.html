@@ -1,0 +1,70 @@
+<!--structure directives-->
+<h1 class="text-center">I am Directives</h1>
+
+<h1>test of ng for</h1>
+<h3>first test</h3>
+<Div class="persons-name">
+    <ul>
+        <li class="name" *ngFor="let name of personsName ; let i=index" style="list-style:none ;">{{i+1}}- {{name}}</li>
+    </ul>
+</Div>
+<h3>second test</h3>
+
+<div class="people-details">
+    <ul *ngFor="let countryName of peopleByCountry">
+        <li>{{countryName.country}}</li>
+        <ul class="person">
+            <li *ngFor="let person of countryName.personName ">{{person.name}}</li>
+        </ul>
+    </ul>
+</div>
+
+<h3>third test</h3>
+
+<!--<input type="text" #courseName placeholder="please enter the new course" (keyup.enter)="onAdd(courseName.value)">
+<button (click)="onAdd(courseName.value)" class="btn btn-success m-2 ">Add</button>
+<ul>
+    <li *ngFor="let course of courses">
+        <button class=" btn btn-danger mb-4" (click)="onDelete(course)">Delete</button>
+        {{course}}
+    </li>
+</ul>-->
+<!--each course has id number-->
+<input type="number" [(ngModel)]="courseId" placeholder="enter course id" (keyup.enter)="printValue(courseId)" required
+    class="me-3">
+<input type="text" #courseName placeholder="please enter the new course"
+    (keyup.enter)="onAdd(courseName.value,courseId)" required>
+<button (click)="onAdd(courseName.value,courseId)" class="btn btn-success m-2 ">Add</button>
+
+<div *ngIf="courses.length > 0 ; then coursesAvailable else noCourses"></div>
+
+
+<ng-template #coursesAvailable>
+    <ul>
+        <li *ngFor="let course of courses">
+            <button class=" btn btn-danger mb-4" (click)="onDelete(course)">Delete</button>
+            {{course.courseName}}
+        </li>
+    </ul>
+</ng-template>
+<ng-template #noCourses>
+    <h1>No courses yet</h1>
+
+</ng-template>
+
+<h3>fourth test</h3>
+<!--ng switch-->
+<div>
+    <ul>
+        <li [class.active]="defaultValue === 'courses'">
+            <a class="btn btn-danger" (click)="setView('courses')">courses</a>
+        </li>
+        <li [class.active]="defaultValue === 'certifications'">
+            <a class="btn btn-danger" (click)="setView('certifications')">certifications</a>
+        </li>
+    </ul>
+</div>
+<div [ngSwitch]="defaultValue">
+    <h3 *ngSwitchCase="'courses'"> I am courses</h3>
+    <h3 *ngSwitchCase="'certifications'">I am certifications</h3>
+</div>

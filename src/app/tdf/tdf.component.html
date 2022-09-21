@@ -1,0 +1,47 @@
+<form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+    {{userForm.value | json}} <br>
+    {{userModel |json}}
+    <div class="form-group">
+        <label>  First Name <span style="color:Red ; font-weight:bold;font: size 20px;">*</span> :</label>
+        <input type="text" [class.is-invalid]="name.invalid && name.touched" required name="firstName" #name="ngModel" [(ngModel)]="userModel.name" class="form-control">
+        <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required !</small>
+    </div>
+    <div class="form-group">
+        <label> Email :</label>
+        <input type="email" name="email"  #email="ngModel" [(ngModel)]="userModel.email" class="form-control">
+    </div>
+    <div class="form-group">
+        <label > Phone :</label>
+        <input type="tel" pattern="^\d{11}$" required [class.is-invalid]="phone.invalid && phone.touched"  name="phoneNumber" #phone="ngModel" [(ngModel)]="userModel.phone" class="form-control" maxlength="11">
+        <div *ngIf="phone.errors && phone.touched">
+            <div class="test-danger" *ngIf="phone.errors['required']">phone is required </div>
+            <div class="test-danger" *ngIf="phone.errors['pattern']">phone must be 11 digit</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <select class="custom-select" name="addTopic" #selection="ngModel" [(ngModel)]="userModel.topic" >
+            <option selected disabled>choose the topic</option>
+            <option *ngFor="let topic of topics">
+                {{topic}}
+            </option>
+        </select>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" #exampleRadios="ngModel" [(ngModel)]="userModel.timeselection" id="exampleRadios1" value="Default-radio" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Default radio
+        </label>
+    </div>
+    <div class="form-check mb-5">
+        <input class="form-check-input" type="radio" name="exampleRadios" #exampleRadios="ngModel" [(ngModel)]="userModel.timeselection" id="exampleRadios1" value="Default-radio-two" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Default radio two
+        </label>
+    </div>
+    <div class="form-group form-check mb-3">
+        <input type="checkbox" class="form-check-input" name="cehkBox" #cehkBox="ngModel" [(ngModel)]="userModel.chkBox" id="exampleCheck1" >
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-success mb-2">Submit</button>
+
+</form>

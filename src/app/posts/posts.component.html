@@ -1,0 +1,37 @@
+
+
+<div class="container">
+    <div class="post-section">
+        <div class="row">
+            <div class="col-md-12 add-btn"><button class="btn btn-danger" >ADD</button></div>
+            <div class="col-md-12" *ngIf="!this.postItem.length">
+                <div class="alert alert-info text-center" role="alert">
+                    <i class="fa fa-circle-info"></i>
+                    Not found Posts !
+                </div>
+            </div>
+            
+            <div class="col-md-3 mt-4" *ngFor="let post of postItem ; let i=index">
+                <div class="card">
+                    <div class="card-header">
+                        <p>{{i+1}} - {{post?.title }}</p>
+
+                    </div>
+                    <div class="card-body">
+                        <!--[routerLink]="['/post/details', post?.id]"-->
+                        <p class="text-body" >{{ post?.body }}
+                            <a class="text-underline  ml-2" routerLink="/posts/details/{{post?.id}}">read more</a>
+                        </p>
+
+
+                    </div>
+                    <div class="card-moreInfo">
+                        <!--<div class="text-info"><i class="fa fa-calendar-alt  m-2"></i>{{ date | date:'shortDate'}}</div>-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
